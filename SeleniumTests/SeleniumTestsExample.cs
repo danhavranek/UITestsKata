@@ -20,7 +20,15 @@ namespace SeleniumTests
         {
             driver.Url = "https://www.saucedemo.com";
 
-            // TODO: Place your test code here
+            var userNameInput = driver.FindElement(By.Id("user-name"));
+            var passwordInput = driver.FindElement(By.Id("password"));
+            var loginButton = driver.FindElement(By.Id("login-button"));
+            
+            userNameInput.SendKeys("standard_user");
+            passwordInput.SendKeys("secret_sauce");
+            loginButton.Click();
+
+            Assert.AreEqual("https://www.saucedemo.com/inventory.html", driver.Url);
         }
 
         [TearDown]
